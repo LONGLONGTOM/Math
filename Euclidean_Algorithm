@@ -1,0 +1,60 @@
+import java.util.*;
+public class Euclidean_Algorithm {
+	//calculating greatest common divisor
+	public static int gcd(int a, int b) {
+		if(a % b == 0) {
+			return b;
+		}
+		else {
+			int temp = b;
+			b = a % b;
+			a = temp;
+		}
+		return gcd(a, b);
+	}
+	
+	//a is the one you want inverse mod of
+	//brutal force calculating 
+	public static int inverse_mod(int a, int b) {
+		//if there is no inverse modulo
+		if(gcd(a,b)!=1) {
+			return 0;
+		}
+		else {
+			int k = 0;
+			while(k*a%b!=1) {
+				k++;
+			}
+			return k;
+		}
+	}
+	
+	//my own method for converting decimal numbers to binary numbers, you can change this part to yours for consistency. 
+	public static ArrayList<Integer> binary(int a){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		while(a!=0) {
+			list.add(a%2);;
+			a = a/2;
+		}
+		return list;
+	}
+	
+	//b is the base number, m is the mod, n is the power
+	public static int modular_exponentiation(int b, int m, int n) {
+		int x = 1;
+		int power = b % m;
+		ArrayList<Integer> base2n = binary(n);
+		for (int i = 0; i<=base2n.size()-1; i++) {
+			if(base2n.get(i) == 1) {
+				x = (x*power) % m;
+			}
+			power = (power*power) % m;
+			//System.out.println(x);
+		}
+		return x;
+	}
+	
+	public static void main(String[] agrs) {
+		System.out.println(modular_exponentiation(1111, 2867, 7));
+	}
+}
