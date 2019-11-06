@@ -28,7 +28,7 @@ public class Euclidean_Algorithm {
 			return k;
 		}
 	}
-	
+	//
 	//my own method for converting decimal numbers to binary numbers, you can change this part to yours for consistency. 
 	public static ArrayList<Integer> binary(int a){
 		ArrayList<Integer> list = new ArrayList<Integer>();
